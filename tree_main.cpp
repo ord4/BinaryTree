@@ -1,8 +1,13 @@
-// Assignment 8 Binary Search Tree driver
+/*
+    Orion Davis (3003072) ord4@zips.uakron.edu 
+    The University of Akron, Computer Science II, Prof Will
+    ASSGN8 Binary Tree Search
+*/
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "Tree.hpp"
+
+#include "tree.hpp"
 
 int main() {
    srand(time(nullptr)); // randomize the random number generator
@@ -35,4 +40,5 @@ int main() {
    }
 
    std::cout << std::endl;
+   return 0;
 }

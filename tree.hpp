@@ -9,7 +9,7 @@
 #ifndef TREE_HPP
 #define TREE_HPP
 #include <iostream>
-#include "Treenode.hpp"
+#include "treenode.hpp"
 
 // Tree class-template definition
 template<typename NODETYPE> class Tree {
@@ -98,26 +98,20 @@ private:
    }
 
    // calculate the depth of the tree
-   void determineDepth(.....) { 
-       
-	   
-	   
-	   
-	   
-      }
-   }
+   //void determineDepth(.....){}
 
    // do a binary search on the Tree
-   TreeNode<NODETYPE>* binarySearchHelper(.....) { 
-  
-  
-  
-  
-  
-  
-  
+   TreeNode<NODETYPE>* binarySearchHelper(TreeNode<NODETYPE>* rootNode, TreeNode<NODETYPE> value){
+       if(rootNode == nullptr || rootNode->data == value){
+           return rootNode;
+       }
+       if(rootNode->data < value){
+           return binarySearchHelper(rootNode->leftPtr, value);
+       }
+       else{
+           return binarySearchHelper(rootNode->rightPtr, value);
+       }
    }
-
 };
 
 #endif // TREE_HPP
