@@ -32,17 +32,31 @@ public:
    }
 
    // get the depth of the tree
-   int getDepth() const {
-      int totalDepth{0};
-      int currentDepth{0};
-
-      determineDepth(rootPtr, &totalDepth, &currentDepth);
-      return totalDepth;
+   int getDepth(TreeNode<NODETYPE>* ptr) const {
+       int rightDepth, leftDepth;
+      if(ptr->leftPtr == nullptr && ptr->rightPtr == nullptr){
+           //There are no leaves to this node
+           return 0;
+       }
+       else{
+           leftDepth = getDepth(ptr->leftPtr);
+           rightDepth = getDepth(ptr->rightPtr);
+           if(leftDepth < rightDepth){
+               return rightDepth;
+           }
+           else{
+               return leftDepth;
+           }
+       }
    }
 
    // begin binary search
    TreeNode<NODETYPE>* binaryTreeSearch(int val) const {
       return binarySearchHelper(rootPtr, val);
+   }
+
+   TreeNode<NODETYPE>* getRoot(){
+       return rootPtr;
    }
 
 private:
@@ -95,25 +109,45 @@ private:
    }
 
    // calculate the depth of the tree
-   //void determineDepth(.....){}
+   /*int determineDepth(TreeNode<NODETYPE>* root, int* leftDepth, int* rightDepth) const{
+       if(root->leftPtr == nullptr && root->rightPtr == nullptr){
+           //There are no leaves to this node
+           return 0;
+       }
+       else{
+           int leftDepth = determineDepth(root->leftPtr, leftDepth, rightDepth);
+           int rightDepth = determineDepth(root->rightPtr, leftDepth, rightDepth);
+           if(leftDepth < rightDepth){
+               return rightDepth;
+           }
+           else{
+               return leftDepth;
+           }
+       }
+   }*/
 
    // do a binary search on the Tree
    TreeNode<NODETYPE>* binarySearchHelper(TreeNode<NODETYPE>* ptr, int value) const{
-       // Come back and add step through logic in words, like on assignment sheet
        if(ptr == nullptr){
            // Empty list/end of tree
            return nullptr;
        }
        else if(value < ptr->getData()){
            // Value is on the left side of the tree
+           std::cout << "Comparing " << value << " to " << ptr->getData() << ": ";
+           std::cout << "smaller, walk left\n";
            return binarySearchHelper(ptr->leftPtr, value);
        }
        else if(value > ptr->getData()){
            // Value is on the right side of the tree
+           std::cout << "Comparing " << value << " to " << ptr->getData() << ": ";
+           std::cout << "larger, walk right\n";
            return binarySearchHelper(ptr->rightPtr, value);
        }
        else{
            // Value has been found
+           std::cout << "Comparing " << value << " to " << ptr->getData() << ": ";
+           std::cout << "search complete\n";
            return ptr;
        }
    }
