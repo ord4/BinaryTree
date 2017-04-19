@@ -30,7 +30,8 @@ int main() {
 
    // create a pointer with the user value
    TreeNode<int>* ptr{intTree.binaryTreeSearch(intVal)};
-
+   
+   /*
    // a value is found
    if (ptr != nullptr) {
       std::cout << ptr->getData() << " was found\n";
@@ -38,7 +39,7 @@ int main() {
    else { // value not found
       std::cout << "Element was not found\n";
    }
-
+*/
    std::cout << std::endl;
    return 0;
 }

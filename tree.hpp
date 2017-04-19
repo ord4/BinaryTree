@@ -1,13 +1,10 @@
-/*
-   COPYRIGHT (C) 2017 Student Name (UANET ID ) All rights reserved.
-   CS assignment
-   Author.  Student Name
-            zippy@zips.uakron.edu
-   Version. 1.01 09.09.2017
-   Purpose: This program ...
-*/
 #ifndef TREE_HPP
 #define TREE_HPP
+/*
+    Orion Davis (3003072) ord4@zips.uakron.edu 
+    The University of Akron, Computer Science II, Prof Will
+    ASSGN8 Binary Tree Search
+*/
 #include <iostream>
 #include "treenode.hpp"
 
@@ -101,17 +98,27 @@ private:
    //void determineDepth(.....){}
 
    // do a binary search on the Tree
-   TreeNode<NODETYPE>* binarySearchHelper(TreeNode<NODETYPE>* rootNode, TreeNode<NODETYPE> value){
-       if(rootNode == nullptr || rootNode->data == value){
-           return rootNode;
+   TreeNode<NODETYPE>* binarySearchHelper(TreeNode<NODETYPE>* ptr, TreeNode<NODETYPE> value){
+       // Come back and add step through logic in words, like on assignment sheet
+       if(ptr == nullptr){
+           // Empty list/end of tree
+           return nullptr;
        }
-       if(rootNode->data < value){
-           return binarySearchHelper(rootNode->leftPtr, value);
+       else if(value < *ptr){
+           // Value is on the left side of the tree
+           return binarySearchHelper(ptr->leftPtr, value);
+       }
+       else if(value > *ptr){
+           // Value is on the right side of the tree
+           return binarySearchHelper(ptr->rightPtr, value);
        }
        else{
-           return binarySearchHelper(rootNode->rightPtr, value);
+           // Value has been found
+           return ptr;
        }
    }
+   
+   
 };
 
 #endif // TREE_HPP

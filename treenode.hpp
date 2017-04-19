@@ -1,21 +1,27 @@
 #ifndef TREENODE_HPP
 #define TREENODE_HPP
-
-// TreeNode class-template definition.
-
+/*
+    Orion Davis (3003072) ord4@zips.uakron.edu 
+    The University of Akron, Computer Science II, Prof Will
+    ASSGN8 Binary Tree Search
+*/
 // forward declaration of class Tree
 template<typename NODETYPE> class Tree;
 
 // TreeNode class-template definition
 template<typename NODETYPE>
-class TreeNode {
-   friend class Tree<NODETYPE>;
-public:
-   // constructor
-   TreeNode(const NODETYPE& d) : data{d} {}
+class TreeNode{
+    friend class Tree<NODETYPE>;
 
-   // return copy of node's data
-   NODETYPE getData() const {return data;}
+public:
+   // Constructor
+   TreeNode(const NODETYPE& d){
+       data = d;
+   }
+
+   NODETYPE getData() const{
+       return data;
+   }
 
    // return a leftPtr
    TreeNode* getLeftPtr() const {
@@ -36,9 +42,10 @@ public:
    void setRightPtr(TreeNode* ptr) {
       rightPtr = ptr;
    }
+   
 private:
-   TreeNode<NODETYPE>* leftPtr{nullptr}; // pointer to left subtree
    NODETYPE data;
+   TreeNode<NODETYPE>* leftPtr{nullptr}; // pointer to left subtree
    TreeNode<NODETYPE>* rightPtr{nullptr}; // pointer to right subtree
 };
 
