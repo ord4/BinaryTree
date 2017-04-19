@@ -98,17 +98,17 @@ private:
    //void determineDepth(.....){}
 
    // do a binary search on the Tree
-   TreeNode<NODETYPE>* binarySearchHelper(TreeNode<NODETYPE>* ptr, TreeNode<NODETYPE> value){
+   TreeNode<NODETYPE>* binarySearchHelper(TreeNode<NODETYPE>* ptr, int value) const{
        // Come back and add step through logic in words, like on assignment sheet
        if(ptr == nullptr){
            // Empty list/end of tree
            return nullptr;
        }
-       else if(value < *ptr){
+       else if(value < ptr->getData()){
            // Value is on the left side of the tree
            return binarySearchHelper(ptr->leftPtr, value);
        }
-       else if(value > *ptr){
+       else if(value > ptr->getData()){
            // Value is on the right side of the tree
            return binarySearchHelper(ptr->rightPtr, value);
        }
